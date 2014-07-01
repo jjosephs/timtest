@@ -1,8 +1,7 @@
 @extends('master')
 
 @section('content')
-    <form role="form">
-    {{ Form::open(array('url' => 'fizzbuzz', 'method' => 'POST')) }}
+    {{ Form::open(array('route' => 'fizzbuzz', 'method' => 'POST')) }}
         <div class="form-group">
             <label for="userName">Name</label>
             <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter name">

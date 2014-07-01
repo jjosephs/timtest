@@ -15,3 +15,9 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::post('fizzbuzz', array('before' => 'csfr', 'as' => 'fizzbuzz', function(){
+
+    return 'test';
+}));
