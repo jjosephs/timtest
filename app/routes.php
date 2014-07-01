@@ -17,7 +17,19 @@ Route::get('/', function()
 });
 
 
-Route::post('fizzbuzz', array('before' => 'csfr', 'as' => 'fizzbuzz', function(){
+Route::post('fizzbuzz', array('before' => 'csrf', 'as' => 'fizzbuzz', function(){
 
-    return 'test';
+    $rules = array(
+        'userName' => 'required',
+        'userEmail' => 'required|email',
+        'userDateOfBirth' => 'required|date_format:m/d/Y'
+    );
+
+    $validator = Validator::make(Input::all(), $rules);
+
+    if($validator->fails()){
+        return Redirect::to('/')->withErrors($validator);
+    }
+
+    return View::make('fizzbuzz')->with('userData', Input::all());
 }));
