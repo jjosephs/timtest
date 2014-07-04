@@ -24,6 +24,17 @@
     @yield('content')
 </div>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+
+<!-- Custom Script -->
+<script>
+    $(function(){
+        $('#userDateOfBirth').datepicker({
+            'startView' : ''
+        })
+    });
+</script>
 </body>
 </html>
