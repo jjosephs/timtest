@@ -11,25 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+// Home Page
+Route::get('/', ['uses' => 'HomeController@showWelcome']);
 
 
-Route::post('fizzbuzz', array('before' => 'csrf', 'as' => 'fizzbuzz', function(){
-
-    $rules = array(
-        'userName' => 'required',
-        'userEmail' => 'required|email',
-        'userDateOfBirth' => 'required|date_format:m/d/Y'
-    );
-
-    $validator = Validator::make(Input::all(), $rules);
-
-    if($validator->fails()){
-        return Redirect::to('/')->withErrors($validator);
-    }
-
-    return View::make('fizzbuzz')->with('userData', Input::all());
-}));
+// FizzBuzz Results Page
+Route::post('fizzbuzz', [
+    'before' => 'csrf',
+    'as' => 'fizzbuzz',
+    'uses' => 'FizzBuzzController@showResultsPage'
+]);
