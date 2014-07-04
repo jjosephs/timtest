@@ -21,3 +21,9 @@ Route::post('fizzbuzz', [
     'as' => 'fizzbuzz',
     'uses' => 'FizzBuzzController@showResultsPage'
 ]);
+
+
+// FizzBuzz redirect for GET method
+Route::get('fizzbuzz', function(){
+    return Redirect::to('/')->withErrors('Form must first be filled out');
+});
